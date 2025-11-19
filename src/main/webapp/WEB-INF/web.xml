@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+<!--    <security-role>-->
+<!--        <role-name>admin</role-name>-->
+<!--    </security-role>-->
+
+<!--    <security-role>-->
+<!--        <role-name>user</role-name>-->
+<!--    </security-role>-->
+
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>Admin Pages</web-resource-name>-->
+<!--            <url-pattern>/admin/*</url-pattern>-->
+<!--        </web-resource-collection>-->
+
+<!--        <auth-constraint>-->
+<!--            <role-name>admin</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
+
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>User Pages</web-resource-name>-->
+<!--            <url-pattern>/user/*</url-pattern>-->
+<!--        </web-resource-collection>-->
+
+<!--        <auth-constraint>-->
+<!--            <role-name>user</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
+
+<!--    <login-config>-->
+<!--        <auth-method>FORM</auth-method>-->
+<!--        <form-login-config>-->
+<!--            <form-login-page>/jsp/login-container-method.jsp</form-login-page>-->
+<!--            <form-error-page>/jsp/error-container-method.jsp</form-error-page>-->
+<!--        </form-login-config>-->
+<!--    </login-config>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>Router</servlet-name>-->
+<!--        <servlet-class>ir.maktabsharif.cinemawatchingsystem.servlets.RouterServlet</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>initial servlet param</param-name>-->
+<!--            <param-value>testInitParam</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup></load-on-startup>-->
+<!--        <async-supported></async-supported>-->
+<!--        <description></description>-->
+<!--        <icon></icon>-->
+<!--        <run-as>-->
+<!--            <role-name></role-name>-->
+<!--        </run-as>-->
+
+<!--        <jsp-file></jsp-file>-->
+<!--        <multipart-config></multipart-config>-->
+<!--        <security-role-ref>-->
+<!--            <role-name>regularUser</role-name>-->
+<!--            <role-link>user</role-link>-->
+<!--        </security-role-ref>-->
+<!--    </servlet>-->
+
+<!--    <welcome-file-list>-->
+<!--        <welcome-file>/app/t</welcome-file>-->
+<!--    </welcome-file-list>-->
+    <welcome-file-list>
+        <welcome-file>app/index</welcome-file>
+    </welcome-file-list>
+</web-app>

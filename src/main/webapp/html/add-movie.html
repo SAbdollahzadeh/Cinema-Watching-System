@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Movie</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-auto" href="#">Movies</a>
+    </div>
+</nav>
+
+<!-- Add Movie Form -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4">
+                <h2 class="mb-4 text-center">Add Movie</h2>
+
+                <form>
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" placeholder="Enter movie title">
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter movie description"></textarea>
+                    </div>
+
+                    <!-- Release Date -->
+                    <div class="mb-3">
+                        <label class="form-label">Release Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+
+                    <!-- Genre -->
+                    <div class="mb-3">
+                        <label class="form-label">Genre</label>
+                        <select class="form-select">
+                            <option>Action</option>
+                            <option selected>Science Fiction</option>
+                            <option>Drama</option>
+                            <option>Comedy</option>
+                        </select>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="mb-3">
+                        <label class="form-label">Rating (0-10)</label>
+                        <input type="number" class="form-control" min="0" max="10" step="0.1">
+                    </div>
+
+                    <!-- Poster Image -->
+                    <div class="mb-3">
+                        <label class="form-label">Poster Image</label>
+                        <input type="file" class="form-control" id="posterInput" accept="image/*">
+                        <div class="mt-2 text-danger" id="posterError"></div>
+                        <div class="mt-3 text-center">
+                            <img id="posterPreview" src="movie.jpeg" alt="Poster Preview" class="img-fluid rounded" style="max-height: 250px;">
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-start">
+                        <button type="submit" class="btn btn-primary me-2">Create</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple JS for live image preview
+    const posterInput = document.getElementById('posterInput');
+    const posterPreview = document.getElementById('posterPreview');
+    const posterError = document.getElementById('posterError');
+
+    posterInput.addEventListener('change', function() {
+        const file = this.files[0];
+        posterError.textContent = '';
+
+        if (file) {
+            if (!file.type.startsWith('image/')) {
+                posterError.textContent = 'Please select a valid image file.';
+                posterPreview.src = 'movie.jpeg';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                posterPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+</body>
+</html>
