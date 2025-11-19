@@ -25,4 +25,6 @@ public interface UserService extends BaseService<User, Long> {
     void addMovieToWatchlist(User user, Movie movie);
 
     void removeMovieFromWatchlist(User user, Movie movie);
+
+    Optional<User> findByUser(User user);
 }

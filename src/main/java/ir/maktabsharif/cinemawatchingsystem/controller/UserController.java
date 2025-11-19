@@ -37,9 +37,10 @@ public class UserController implements Controller {
 
     private String watchlist(HttpServletRequest req) {
         UserService userService = new UserServiceImpl(new UserRepositoryImpl());
-        User user = userService.findById(
-                ((User) req.getSession().getAttribute("user")).getId()
-        ).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        User user = userService.findByUser((User) req.getSession().getAttribute("user")).orElse(null);
+        if (user == null) {
+            return "redirect:/app/user/login";
+        }
 
         if (user instanceof RegularUser regularUser) {
             if (req.getSession().getAttribute("message") != null) {
@@ -60,7 +61,11 @@ public class UserController implements Controller {
         UserService userService = new UserServiceImpl(new UserRepositoryImpl());
         MovieService movieService = new MovieServiceImpl(new MovieRepositoryImpl());
         Movie movie = movieService.findById(Long.parseLong(req.getParameter("id"))).orElseThrow(() -> new UserUpdateException("Movie not found in remove process"));
-        User user = (User) req.getSession().getAttribute("user");
+        User user = userService.findByUser((User) req.getSession().getAttribute("user")).orElse(null);
+        if (user == null) {
+            return "redirect:/app/user/login";
+        }
+
         try {
             if (user != null && user instanceof RegularUser) {
                 userService.removeMovieFromWatchlist(user, movie);
@@ -80,7 +85,10 @@ public class UserController implements Controller {
         UserService userService = new UserServiceImpl(new UserRepositoryImpl());
         MovieService movieService = new MovieServiceImpl(new MovieRepositoryImpl());
         Movie movie = movieService.findById(Long.parseLong(req.getParameter("id"))).get();
-        User user = (User) req.getSession().getAttribute("user");
+        User user = userService.findByUser((User) req.getSession().getAttribute("user")).orElse(null);
+        if (user == null) {
+            return "redirect:/app/user/login";
+        }
 
         try {
             if (user != null && user instanceof RegularUser) {

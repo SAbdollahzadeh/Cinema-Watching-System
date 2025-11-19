@@ -178,4 +178,18 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
             throw new UserUpdateException("Movie dose not exist in Watchlist");
         }
     }
+
+    @Override
+    public Optional<User> findByUser(User user) {
+        if (user == null)
+            return Optional.empty();
+
+        if (user.getId() != null) {
+            return findById(user.getId());
+        } else if (user.getUsername() != null) {
+            return findByUsername(user.getUsername());
+        } else {
+            return Optional.empty();
+        }
+    }
 }
